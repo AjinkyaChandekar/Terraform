@@ -1,5 +1,7 @@
 provider "aws" {
   region = var.aws_region
+  access_key = "AKIARLIIQSOZ7M2GHHFY"
+  secret_key = "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"
 }
 
 resource "aws_instance" "Server" {
