@@ -5,11 +5,10 @@ provider "aws" {
 resource "aws_instance" "Server" {
   ami           = "ami-0e472ba40eb589f49"
   key_name = var.key_name
-  instance_type = lookup(var.instance_type,terraform.workspace)
+  instance_type = var.instance_type
   security_groups= [var.security_group]
 
   tags = {
     Name = "Server"
   }
 }
-
