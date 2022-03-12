@@ -1,27 +1,22 @@
-variable "aws_region" {
-  description = "The AWS region to create things in."
-  default     = "us-east-1"
-}
-
 variable "key_name" {
   description = " SSH keys to connect to ec2 instance"
-  default     =  "ajinkya-key"
+  default     =  "TF-SERV"
 }
 
 variable "instance_type" {
   description = "instance type for ec2"
-  default     =  "t2.micro"
+  type = map(string)
+  default = {
+	prod = "t2.micro"
+	dev  = "t2.large"
+}
 }
 
 variable "security_group" {
   description = "Name of security group"
-  default     = "EC2-Jenkins"
+  default     = "SSH"
 }
 
-#variable "tag_name" {
-#  description = "Tag Name of for Ec2 instance"
-#  default     = "my-ec2-jenkins"
-#}
 
 variable "ami_id" {
   description = "AMI for Ubuntu Ec2 instance"
