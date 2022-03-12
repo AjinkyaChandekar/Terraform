@@ -1,18 +1,14 @@
 provider "aws" {
-  region = var.aws_region
-  access_key = "AKIARLIIQSOZ7M2GHHFY"
-  secret_key = "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"
+  region = "us-west-1"
 }
 
 resource "aws_instance" "Server" {
-  count = 2 # create two similar EC2 instances
-  ami           = var.ami_id
+  ami           = "ami-0e472ba40eb589f49"
   key_name = var.key_name
-  instance_type = var.instance_type
+  instance_type = lookup(var.instance_type,terraform.workspace)
   security_groups= [var.security_group]
 
   tags = {
-    #Name = "${var.server[count.index]}"
-    Name = "Server ${count.index}"
+    Name = "Server"
   }
 }
