@@ -5,11 +5,8 @@ variable "key_name" {
 
 variable "instance_type" {
   description = "instance type for ec2"
-  type = map(string)
-  default = {
-	prod = "t2.micro"
-	dev  = "t2.large"
-}
+  default = "t2.micro"
+
 }
 
 variable "security_group" {
